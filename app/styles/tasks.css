@@ -1,0 +1,79 @@
+.root {
+  /* margin: 15px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "calender tasks backlog";
+}
+
+.calender-wrapper {
+  grid-area: calender;
+}
+
+.tasks-wrapper {
+  grid-area: tasks;
+}
+
+.backlog-wrapper {
+  grid-area: backlog;
+}
+
+.task-item-root {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.task-item-root > form {
+  width: unset;
+}
+
+.icon-color-primary {
+  color: var(--color-background);
+}
+
+.empty-list {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.empty-list > h5 {
+  color: darkgrey;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-wrapper {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 860px) {
+  .root {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "calender calender" "tasks backlog";
+  }
+
+  .tasks-wrapper {
+    margin-top: 15px;
+  }
+  .backlog-wrapper {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .root {
+    /* grid-template-areas: "calender" "tasks" "backlog"; */
+    display: unset;
+  }
+}
