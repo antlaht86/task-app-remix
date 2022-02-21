@@ -40,7 +40,11 @@ export const loader: LoaderFunction = async ({ request }) => {
       },
     });
   } else {
-    tasks = await prisma.task.findMany();
+    tasks = await prisma.task.findMany({
+      where: {
+        userId,
+      },
+    });
   }
   await prisma.$disconnect();
   return { ok: true, data: tasks };

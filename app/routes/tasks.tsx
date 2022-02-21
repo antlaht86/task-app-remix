@@ -56,6 +56,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       text: "asc",
     },
   });
+  console.log("🤡 tasksWithDateTimes: ", tasksWithDateTimes);
 
   const dateTimes = tasksWithDateTimes.map((item) => item.date);
   await prisma.$disconnect();
