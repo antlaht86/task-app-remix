@@ -1,6 +1,6 @@
 import { ActionFunction, redirect } from "remix";
 import { prisma } from "~/lib/prisma";
-import { getISOString } from "~/utils";
+import { getCustomDateTime } from "~/utils";
 import { uuid } from "uuidv4";
 import { requireUserId } from "~/utils/session.server";
 
@@ -14,7 +14,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   let action = formData.get("_action")?.toString();
   let text = formData.get("text")?.toString() ?? "";
-  let dateTime = getISOString(formData.get("dateTime")?.toString());
+  let dateTime = getCustomDateTime(formData.get("dateTime")?.toString());
 
   switch (action) {
     case "create": {

@@ -9,10 +9,10 @@
   --hs-links: 48 100%;
   --color-foreground: #77448b;
   --color-background: hsl(0, 0%, 98%);
-  --color-links: hsl(var(--hs-links) 50%);
+  --color-links: hsl(277, 85%, 38%);
   --color-links-hover: hsl(var(--hs-links) 45%);
   --color-border: hsl(277, 85%, 38%);
-  --color-invalid: hsl(356, 100%, 71%);
+  --color-invalid: hsl(356deg 100% 50%);
   --gradient-background: radial-gradient(
     circle,
     rgba(152, 11, 238, 1) 0%,
@@ -39,7 +39,7 @@ html {
 }
 
 :focus {
-  outline: var(--color-links) solid 2px;
+  outline: var(--color-border) solid 2px;
   outline-offset: 2px;
 }
 
@@ -52,7 +52,7 @@ body {
 }
 
 [data-light] {
-  --color-invalid: hsl(356, 70%, 39%);
+  --color-invalid: hsl(356deg 100% 50%);
   color: var(--color-background);
   background-color: var(--color-foreground);
 }

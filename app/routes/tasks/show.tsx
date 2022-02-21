@@ -11,7 +11,7 @@ import TaskComponent from "~/components/task";
 import useMove from "~/hooks/useMove";
 import { prisma } from "~/lib/prisma";
 import { ILoaderResponse } from "~/types";
-import { getISOString } from "~/utils";
+import { getCustomDateTime } from "~/utils";
 import { requireUserId } from "~/utils/session.server";
 import stylesTasksUrl from "../../styles/tasks.css";
 
@@ -22,15 +22,14 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   let url = new URL(request.url);
 
-  let day = getISOString(url.searchParams.get("day")?.toString());
+  let day = getCustomDateTime(url.searchParams.get("day")?.toString());
   let tasks: Task[] = [];
 
   if (day) {
     tasks = await prisma.task.findMany({
       where: {
-        date: {
-          equals: day,
-        },
+        date: day,
+
         AND: {
           userId,
         },
@@ -46,6 +45,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       },
     });
   }
+
   await prisma.$disconnect();
   return { ok: true, data: tasks };
 };

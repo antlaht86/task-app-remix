@@ -1,7 +1,7 @@
-import { ActionFunction, redirect } from "remix";
+import { ActionFunction } from "remix";
 import { prisma } from "~/lib/prisma";
-import { getISOString } from "~/utils";
-import { getUserId, requireUserId } from "~/utils/session.server";
+import { getCustomDateTime } from "~/utils";
+import { requireUserId } from "~/utils/session.server";
 
 type Props = {};
 
@@ -12,7 +12,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   let action = formData.get("_action");
   let id = formData.get("id")?.toString();
-  let dateTime = getISOString(formData.get("dateTime")?.toString());
+  let dateTime = getCustomDateTime(formData.get("dateTime")?.toString());
 
   if (!id) return { ok: false, data: null };
 

@@ -10,6 +10,17 @@ export function getISOString(value?: string | null) {
   return null;
 }
 
+export function getCustomDateTime(value?: string | null) {
+  if (!value) return null;
+
+  if (moment(value ?? "").isValid()) {
+    const d = new Date(value);
+    return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+  }
+
+  return null;
+}
+
 export function getUrlDay(value: string) {
   return encodeURIComponent(moment(value).calendar("L"));
 }

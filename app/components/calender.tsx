@@ -3,7 +3,7 @@ import moment from "moment";
 import { useNavigate } from "remix";
 import useElementSize from "~/hooks/useElementSize";
 import { cssc } from "~/utils";
-
+import Tooltip from "@mui/material/Tooltip";
 type Props = {
   dateTimes: string[];
   pickDay: (arg: number, dateTime: string) => void;
@@ -30,9 +30,11 @@ export default function Calender({
           {dates.map((item) => {
             if (!moment(item).isValid()) {
               return (
-                <li key={item} className={" calender-month-item"}>
-                  <div>{item}</div>
-                </li>
+                <Tooltip key={item} title={item}>
+                  <li className={"calender-month-item"}>
+                    <div>{item}</div>
+                  </li>
+                </Tooltip>
               );
             }
 
@@ -68,7 +70,9 @@ export default function Calender({
                   navigate(`/tasks/show/?day=${encodeURIComponent(item)}`);
                 }}
               >
-                <div>{day}</div>
+                <Tooltip title={item}>
+                  <div>{day}</div>
+                </Tooltip>
               </li>
             );
           })}

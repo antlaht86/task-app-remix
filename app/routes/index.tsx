@@ -4,6 +4,9 @@ import { useActionData, Form, Link, useSearchParams, json } from "remix";
 import { prisma } from "~/lib/prisma";
 import { login, createUserSession, register } from "~/utils/session.server";
 import stylesUrl from "../styles/login.css";
+import LoginIcon from "@mui/icons-material/Login";
+
+import Button from "@mui/material/Button";
 
 export const meta: MetaFunction = () => {
   return {
@@ -193,9 +196,15 @@ export default function Login() {
               </p>
             ) : null}
           </div>
-          <button type="submit" className="button">
+
+          <Button
+            type="submit"
+            variant="contained"
+            endIcon={<LoginIcon />}
+            style={{ marginTop: "10px", background: "center" }}
+          >
             Submit
-          </button>
+          </Button>
         </Form>
       </div>
     </div>
