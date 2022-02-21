@@ -46,7 +46,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   let tasksWithDateTimes = await prisma.task.findMany({
     where: {
       date: {
-        gt: "1990-02-12T22:00:00.000Z",
+        not: null,
       },
       AND: {
         userId,
