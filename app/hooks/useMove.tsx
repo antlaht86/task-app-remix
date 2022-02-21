@@ -2,7 +2,7 @@ import { Task } from "@prisma/client";
 import React, { useState } from "react";
 import { useFetchers } from "remix";
 import { ILoaderResponse } from "~/types";
-
+import { ObjectID } from "bson";
 export default function useMove(
   res: ILoaderResponse<Task[]>,
   where: "toBacklog" | "toCalender"
@@ -41,6 +41,26 @@ export default function useMove(
           if (!optimisticData.find((item) => item.id === formData.id)) {
             setOptimisticData((state) =>
               state.concat([{ ...formData, done: formData.done === "done" }])
+            );
+          }
+        } else if (
+          f.state === "submitting" &&
+          f.submission &&
+          f.submission.formData?.getAll("where")?.[0] === where
+        ) {
+          const formData = Object.fromEntries(
+            f.submission.formData
+          ) as unknown as Omit<Task, "done"> & { done: string };
+
+          if (!optimisticData.find((item) => item.id === formData.id)) {
+            setOptimisticData((state) =>
+              state.concat([
+                {
+                  ...formData,
+                  done: formData.done === "done",
+                  text: "",
+                },
+              ])
             );
           }
         }

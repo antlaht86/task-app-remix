@@ -14,6 +14,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   let action = formData.get("_action")?.toString();
   let text = formData.get("text")?.toString() ?? "";
+  let id = formData.get("id")?.toString() ?? "";
   let dateTime = getCustomDateTime(formData.get("dateTime")?.toString());
 
   switch (action) {
@@ -24,6 +25,7 @@ export const action: ActionFunction = async ({ request }) => {
           slug: uuid(),
           text,
           date: dateTime,
+          id,
         },
       });
 

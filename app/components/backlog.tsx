@@ -15,7 +15,7 @@ export default function Backlog({ data, pickedDay }: Props) {
     <div>
       <div className="header-wrapper">
         <h4 style={{ textAlign: "center" }}>Backlog</h4>
-        <CreateTask />
+        <CreateTask where="toBacklog" />
       </div>
 
       <ul>

@@ -69,7 +69,7 @@ export default function Index(props: Props) {
     <div>
       <div className="header-wrapper">
         <h4 style={{ textAlign: "center" }}>Tasks</h4>
-        <CreateTask pickedDay={pickedDay} />
+        <CreateTask where="toCalender" pickedDay={pickedDay} />
       </div>
       <ul>
         {data.map((item) => (

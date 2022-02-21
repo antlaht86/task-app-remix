@@ -9,7 +9,7 @@
   --hs-links: 48 100%;
   --color-foreground: #77448b;
   --color-background: hsl(0, 0%, 98%);
-  --color-links: hsl(277, 85%, 38%);
+  --color-links: hsl(var(--hs-links) 50%);
   --color-links-hover: hsl(var(--hs-links) 45%);
   --color-border: hsl(277, 85%, 38%);
   --color-invalid: hsl(356deg 100% 50%);
